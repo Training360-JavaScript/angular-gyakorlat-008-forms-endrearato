@@ -3,24 +3,24 @@
     <form #eventForm="ngForm" (ngSubmit)="onUpdate(eventForm, event)">
       <div class="form-group">
         <label for="">Name</label>
-        <input name="name" [(ngModel)]="event.name" type="text"
-          class="form-control" pattern=".{8,}" required>
+        <input required name="name" [(ngModel)]="event.name" type="text"
+          class="form-control" pattern="^[a-űA-Ű]{8, 25}$" required>
         <div [hidden]="eventForm.controls.name?.valid" class="error-message">
           The name of the event must be...
         </div>
       </div>
       <div class="form-group">
         <label for="">Date</label>
-        <input name="date" [(ngModel)]="event.date" type="text"
+        <input required name="date" pattern="^(0?[1-9]|1[012])\/(0?[1-9]|[12][0-9]|3[01])\/((19\d{2})|([2-9]\d{3}))$" [(ngModel)]="event.date" type="text"
           class="form-control">
       </div>
       <div class="form-group">
         <label for="">Time</label>
-        <input name="time" [(ngModel)]="event.time" type="text" class="form-control">
+        <input required name="time" pattern="^\d{1,2}:\d{2}([ap]m)?$" [(ngModel)]="event.time" type="text" class="form-control">
       </div>
       <div class="form-group">
         <label for="">Location</label>
-        <input name="location" [(ngModel)]="event.location" type="text" class="form-control">
+        <input required pattern="^[a-űA-Ű]{5, 25}$" name="location" [(ngModel)]="event.location" type="text" class="form-control">
       </div>
 
       <button type="submit" class="btn btn-primary btn-block btn-lg">
